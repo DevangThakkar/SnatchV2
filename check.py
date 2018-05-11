@@ -55,6 +55,7 @@ RETURN CODES:
 -2: Invalid draw of tiles
  3: Valid withdrawal of tiles
 -3: Invalid withdrawal of tiles
+ 4: Snatching tiles
 
 EXAMPLE RUN:
 

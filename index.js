@@ -111,6 +111,14 @@ io.on('connection', (socket) => {
 
 			if(parseInt(results[0]) == 4){
 				centre = results[2]
+				var str = ""
+				for(var key in words){
+					str += key + ": " + words[key] + "; "
+				}
+				io.emit('new message', {
+					username: socket.username,
+					message: str
+				});
 				console.log(results[1])
 				words[socket.username].push(results[5]);
 				temp = words[results[3]]
