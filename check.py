@@ -1,0 +1,233 @@
+#MIT License
+#Copyright (c) 2018 Devang Thakkar
+# https://home.iitb.ac.in/~devangthakkar
+#
+#Permission is hereby granted, free of charge, to any person obtaining a copy
+#of this software and associated documentation files (the "Software"), to deal
+#in the Software without restriction, including without limitation the rights
+#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#copies of the Software, and to permit persons to whom the Software is
+#furnished to do so, subject to the following conditions:
+#
+#The above copyright notice and this permission notice shall be included in 
+#all copies or substantial portions of the Software.
+#
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#SOFTWARE.
+
+#PEP-8 format: Limit all lines to a maximum of 79 characters ----------------|
+
+import sys
+
+"""
+This script parses the input passed by the user. There are four possible
+cases, with possible subcases.
+
+The first case is where the user wishes to draw tiles from the bag. The
+user may input as many dots as the number of words they wishes to draw such
+that the minimum number of dots is 1 and the maximum number of dots is 7.
+
+The second case is where the user wishes to send a chat message to the group.
+The message needs to begin with a "/" (just the mark, without the quotes, duh)
+and may be as long as needed.
+
+The third (and the most important) case is where the user wishes to make or
+snatch a word. The minimum allowed word size is 6, normal snatch rules apply.
+However, this program is not built to check if attempted words are derivatives
+of existing word (Derivative rule) or fall under the 5+1/4+2/3+3 violation
+(Composition rule). Word list used is CSW15. The message just needs to be the
+word itself - no frills.
+
+The fourth (and the last, for now) case is for a user to honorably retract
+their word if it is pointed out to be a violation of the Derivative or
+Composition rule. The message needs to be the word prepended by a "-".
+
+RETURN CODES:
+ 0: Chat
+ 1: Valid attempt
+-1: Invalid attempt
+ 2: Valid draw of tiles
+-2: Invalid draw of tiles
+ 3: Valid withdrawal of tiles
+-3: Invalid withdrawal of tiles
+
+EXAMPLE RUN:
+
+d1> .......
+>>> d1 drew ATRESCO; Centre: ATRESCO
+d2> .
+>>> d2 drew S; Centre: ATRESCOS
+d1> coasters
+>>> d1 made COASTERS; Centre:
+d1> ......
+>>> d1 drew MOEDINA; Centre: MOEDINA
+d2> domained
+>>> DOMAINED can not be made now; Centre: MOEDINA
+d2> domain
+>>> d2 made DOMAIN; Centre: E
+d1> .........
+>>> Do you really want so many tiles? Didn't think so; Centre: E
+d1> .......
+>>> d1 drew TTREASY; Centre: ETTREASY
+d2> treats
+>>> d2 made TREATS; Centre: EY
+d1> /Wait
+d1> /That's not allowed
+d2> /Ah. MB.
+d2> -TREATS
+>>> d2 withdrew TREATS; Centre: EYTREATS
+"""
+
+# first argument is the letters in the centre
+centre = str(sys.argv[1]).upper().strip()
+# second argument is the word attempted
+attempted = str(sys.argv[2]).upper().strip()
+# third argument is the user attempting the word
+attempter = str(sys.argv[3]).strip()
+#fourth argument is the words already made
+words = str(sys.argv[4]).strip()
+
+words = words.replace("\"","")
+words = words.replace("],","];")
+words = words.replace("[","")
+words = words.replace("]","")
+words = words.replace("{","")
+words = words.replace("}","")
+
+# if len(words) > 15:
+# 	print(words)
+
+word_arr = words.split(";")
+word_dict = {}
+for user in word_arr:
+	username = user.strip().split(":")[0]
+	if username:
+		for word in ((user.strip().split(":"))[1]).strip().split(","):
+			if not username in word_dict:
+				word_dict[username] = [word]
+			else:
+				word_dict[username].append(word) 
+
+
+check = True
+draw = False
+withdraw = False
+chat = False
+
+# DRAWING TILES
+if attempted[0] == '.':  # if person is withdrawing
+	check = False
+	draw = True
+
+	for letter in attempted:
+		if letter != '.':
+			draw = False
+
+	if draw:
+		print("2")
+		print(len(attempted))
+	else:
+		print("-2")
+		print("Perhaps there's a typo; ")
+		print("Centre: " + centre)
+
+# CHATTING
+if attempted[0] == '/':
+	check = False
+	chat = True
+	print("0")
+	print(attempted[0][1:])
+
+# CHECKING IF LEGIT WORD
+if check:
+	temp = centre
+	flag = True
+
+	for letter in attempted:
+		if letter not in centre:
+			flag = False
+			centre = temp
+			break
+		else:
+			centre = centre.replace(letter, "", 1)
+
+	csw15 = set([])
+	with open("CSW15.txt", "r") as f:
+		for line in f:
+			csw15.add(line.strip().rstrip())
+
+	if ("\"" + attempted + "\"") not in csw15 and flag:
+		print("-1")
+		print(attempted + " is invalid1; ")
+		centre = temp
+		print("Centre: " + centre)
+		flag = False
+		sys.exit()
+
+	if flag:
+		print("1")
+		print(attempter + " made: " + attempted + ", ")
+		print("Centre: " + centre)
+		sys.exit()
+
+	if not flag:
+		flag1 = True
+		loser = ""
+		lost = ""
+		for user in word_dict:
+			for word in word_dict[user]:
+				flag1 = True
+				temp_w = word
+				for letter in attempted:
+					if letter not in centre + word:
+						flag1 = False
+						centre = temp
+						break
+					else:
+						if letter in word:
+							word = word.replace(letter, "", 1)
+						else:
+							centre = centre.replace(letter, "", 1)
+				word = temp_w
+				temp_a = attempted
+				if flag1:
+					for letter in word:
+						if letter not in attempted:
+							flag1 = False
+							break
+						else:
+							attempted = attempted.replace(letter, "", 1)
+					attempted = temp_a
+
+				if flag1:
+					lost = word
+					break
+			if flag1:
+				loser = user
+				break
+		if not flag1:
+			print("-1")
+			print(attempted + " is invalid2; ")
+			print("Centre: " + centre)
+			sys.exit()
+		
+		if ("\"" + attempted + "\"") not in csw15 and flag1:
+			print("-1")
+			print(attempted + " is invalid3; ")
+			print("Centre: " + centre)
+			flag = False
+			sys.exit()
+
+		if flag1:
+			print("4")
+			print(attempter + " made: " + attempted + " from " + lost + "; ")
+			print("Centre: " + centre)
+			print(loser)
+			print(lost)
+			print(attempted)
+			sys.exit()
