@@ -7,7 +7,7 @@ var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
 var PythonShell = require('python-shell');
 
-var centre = ' Centre: KCYIIOATERASREDMNONPBCDS';
+var centre = ' Centre: ';
 // Yes, I have removed the blanks because I was lazy; you may add them
 var bag = 'EEIBOOLEHALAPYTERWJRANEOSIDRRFLOESETAMQGIUVIUBPIKIFATRGNIADESTANHIDMGNEXTUOCRETLOISAZOYUODCNVNEAWE';
 var words = new Object();
@@ -50,6 +50,14 @@ io.on('connection', (socket) => {
 					username: socket.username,
 					message: results[1]+results[2]
 				});
+				var str = ""
+				for(var key in words){
+					str += key + ": " + words[key] + "; "
+				}
+				io.emit('new message', {
+					username: socket.username,
+					message: str
+				});
 			}
 			// if a valid word is made
 			if (parseInt(results[0]) == 1){
@@ -87,6 +95,14 @@ io.on('connection', (socket) => {
 							username: socket.username,
 							message: results[1] + results[2]
 						});
+						var str = ""
+						for(var key in words){
+							str += key + ": " + words[key] + "; "
+						}
+						io.emit('new message', {
+							username: socket.username,
+							message: str
+						});
 					}
 
 					if (parseInt(results[0]) == 1){
@@ -94,6 +110,14 @@ io.on('connection', (socket) => {
 						io.emit('new message', {
 							username: socket.username,
 							message: results[1] + results[2]
+						});
+						var str = ""
+						for(var key in words){
+							str += key + ": " + words[key] + "; "
+						}
+						io.emit('new message', {
+							username: socket.username,
+							message: str
 						});
 					}
 					
@@ -105,12 +129,6 @@ io.on('connection', (socket) => {
 					username: socket.username,
 					message: results[1] + results[2]
 				});
-			}
-
-			if(parseInt(results[0]) == 0){}
-
-			if(parseInt(results[0]) == 4){
-				centre = results[2]
 				var str = ""
 				for(var key in words){
 					str += key + ": " + words[key] + "; "
@@ -119,14 +137,60 @@ io.on('connection', (socket) => {
 					username: socket.username,
 					message: str
 				});
+			}
+
+			if(parseInt(results[0]) == 0){}
+
+			if(parseInt(results[0]) == 3){
+				io.emit('new message', {
+					username: socket.username,
+					message: results[1] + results[2]
+				});
+				temp = words[results[3]]
+				temp.splice(temp.indexOf(results[4]), 1)
+				words[results[3]] = temp
+				var str = ""
+				for(var key in words){
+					str += key + ": " + words[key] + "; "
+				}
+				io.emit('new message', {
+					username: socket.username,
+					message: str
+				});
+			}
+			if(parseInt(results[0]) == -3){
+				io.emit('new message', {
+					username: socket.username,
+					message: results[1] + results[2]
+				});
+				var str = ""
+				for(var key in words){
+					str += key + ": " + words[key] + "; "
+				}
+				io.emit('new message', {
+					username: socket.username,
+					message: str
+				});
+			}
+
+			if(parseInt(results[0]) == 4){
+				centre = results[2]
+				io.emit('new message', {
+					username: socket.username,
+					message: results[1] + results[2]
+				});
 				console.log(results[1])
 				words[socket.username].push(results[5]);
 				temp = words[results[3]]
 				temp.splice(temp.indexOf(results[4]), 1)
 				words[results[3]] = temp
+				var str = ""
+				for(var key in words){
+					str += key + ": " + words[key] + "; "
+				}
 				io.emit('new message', {
 					username: socket.username,
-					message: results[1] + results[2]
+					message: str
 				});
 			}
 

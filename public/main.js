@@ -229,9 +229,9 @@ $(function() {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "Welcome to Snatch\nEnter \".\" to draw a tile. Max tiles drawable at once: 7. ";
+    var message = "Welcome to Snatch. Enter a dot (.) to draw a tile. Max tiles drawable at once: 7. ";
     message += "Enter a word to create/snatch it. ";
-    message += "Prepend message with \\ to chat.";
+    message += "Prepend message with a slash(/) to chat.";
     log(message, {
       prepend: true
     });

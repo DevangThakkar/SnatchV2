@@ -43,9 +43,12 @@ of existing word (Derivative rule) or fall under the 5+1/4+2/3+3 violation
 (Composition rule). Word list used is CSW15. The message just needs to be the
 word itself - no frills.
 
-The fourth (and the last, for now) case is for a user to honorably retract
-their word if it is pointed out to be a violation of the Derivative or
-Composition rule. The message needs to be the word prepended by a "-".
+The fourth (and the last, for now) case is for a user to retract their or
+someone else's word if it is pointed out to be a violation of the Derivative
+or Composition rule. The message needs to be the word prepended by a "-". 
+Withdrawing words is slightly shitty - the withdrawn word goes into the centre
+thus if the word was initially snatched, the user from whom the word was
+snatched needs to remake the word. Shitty, I know. Improve it, when you can.
 
 RETURN CODES:
  0: Chat
@@ -93,15 +96,10 @@ attempter = str(sys.argv[3]).strip()
 #fourth argument is the words already made
 words = str(sys.argv[4]).strip()
 
-words = words.replace("\"","")
 words = words.replace("],","];")
-words = words.replace("[","")
-words = words.replace("]","")
-words = words.replace("{","")
-words = words.replace("}","")
-
-# if len(words) > 15:
-# 	print(words)
+for char in ["\"", "[", "]", "{", "}"]:
+	if char in words:
+		words = words.replace(char, "")
 
 word_arr = words.split(";")
 word_dict = {}
@@ -121,7 +119,7 @@ withdraw = False
 chat = False
 
 # DRAWING TILES
-if attempted[0] == '.':  # if person is withdrawing
+if attempted[0] == '.':
 	check = False
 	draw = True
 
@@ -143,6 +141,32 @@ if attempted[0] == '/':
 	chat = True
 	print("0")
 	print(attempted[0][1:])
+
+# WITHDRAWING
+if attempted[0] == '-':
+	check = False
+	withdraw = True
+
+	flag_w = False
+	withdrawn = attempted[1:]
+	for user in word_dict:
+		for word in word_dict[user]:
+			if withdrawn == word:
+				print("3")
+				print(attempter+" has withdrawn "+user+"'s word "+word+"; ")
+				print("Centre: " + (centre+word))
+				print(user)
+				print(word)
+				flag_w = True
+			if flag_w:
+				break
+		if flag_w:
+			break
+
+	if not flag_w:
+		print("-3")
+		print("You are trying to withdraw a non existing word.")
+		print("Centre: " + centre)
 
 # CHECKING IF LEGIT WORD
 if check:
@@ -214,12 +238,14 @@ if check:
 		if not flag1:
 			print("-1")
 			print(attempted + " is invalid2; ")
+			centre = temp
 			print("Centre: " + centre)
 			sys.exit()
 		
 		if ("\"" + attempted + "\"") not in csw15 and flag1:
 			print("-1")
 			print(attempted + " is invalid3; ")
+			centre = temp
 			print("Centre: " + centre)
 			flag = False
 			sys.exit()
