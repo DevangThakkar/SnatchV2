@@ -43,5 +43,5 @@ if flag:
 	centre += drawn
 	print("1")
 	print(drawer + " drew " + drawn + "; ")
-	print("Centre: " + centre)
-	# print(", Bag:" + bag) # To be commented
+	print("Centre: " + centre + "; ")
+	print(bag)

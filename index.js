@@ -79,7 +79,7 @@ io.on('connection', (socket) => {
 					message: str
 				});
 			}
-
+			// if valid tiles are drawn
 			if (parseInt(results[0]) == 2){
 				var options_d = {
 					mode: 'text',
@@ -119,6 +119,7 @@ io.on('connection', (socket) => {
 							username: socket.username,
 							message: str
 						});
+						bag = results[3]
 					}
 					
 				});
