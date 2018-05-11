@@ -142,6 +142,7 @@ io.on('connection', (socket) => {
 			if(parseInt(results[0]) == 0){}
 
 			if(parseInt(results[0]) == 3){
+				centre = results[2]
 				io.emit('new message', {
 					username: socket.username,
 					message: results[1] + results[2]

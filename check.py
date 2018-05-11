@@ -188,7 +188,7 @@ if check:
 
 	if ("\"" + attempted + "\"") not in csw15 and flag:
 		print("-1")
-		print(attempted + " is invalid1; ")
+		print(attempted + " is invalid; ")
 		centre = temp
 		print("Centre: " + centre)
 		flag = False
@@ -237,14 +237,14 @@ if check:
 				break
 		if not flag1:
 			print("-1")
-			print(attempted + " is invalid2; ")
+			print(attempted + " is invalid; ")
 			centre = temp
 			print("Centre: " + centre)
 			sys.exit()
 		
 		if ("\"" + attempted + "\"") not in csw15 and flag1:
 			print("-1")
-			print(attempted + " is invalid3; ")
+			print(attempted + " is invalid; ")
 			centre = temp
 			print("Centre: " + centre)
 			flag = False
