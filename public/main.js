@@ -231,7 +231,8 @@ $(function() {
     // Display the welcome message
     var message = "Welcome to Snatch. Enter a dot (.) to draw a tile. Max tiles drawable at once: 7. ";
     message += "Enter a word to create/snatch it. ";
-    message += "Prepend message with a slash(/) to chat.";
+    var linker = "here"
+    message += "Prepend message with a slash(/) to chat. More details "+ here.link("https://pastebin.com/9ZC2Xfpf");
     log(message, {
       prepend: true
     });

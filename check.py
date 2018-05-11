@@ -181,8 +181,10 @@ if check:
 		else:
 			centre = centre.replace(letter, "", 1)
 
+	choice = attempted[0].upper()
+	fname = "dict/CSW_" + choice + ".txt"
 	csw15 = set([])
-	with open("CSW15.txt", "r") as f:
+	with open(fname, "r") as f:
 		for line in f:
 			csw15.add(line.strip().rstrip())
 

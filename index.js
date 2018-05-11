@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
 			if (parseInt(results[0]) == -1){
 				centre = results[2];
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: results[1]+results[2]
 				});
 				var str = ""
@@ -55,7 +55,7 @@ io.on('connection', (socket) => {
 					str += key + ": " + words[key] + "; "
 				}
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: str
 				});
 			}
@@ -67,7 +67,7 @@ io.on('connection', (socket) => {
 				words[socket.username].push(word);
 				console.log(words);
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: results[1] + results[2]
 				});
 				var str = ""
@@ -75,7 +75,7 @@ io.on('connection', (socket) => {
 					str += key + ": " + words[key] + "; "
 				}
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: str
 				});
 			}
@@ -92,7 +92,7 @@ io.on('connection', (socket) => {
 
 					if (parseInt(results[0]) == 0){
 						io.emit('new message', {
-							username: socket.username,
+							username: "snatch",
 							message: results[1] + results[2]
 						});
 						var str = ""
@@ -100,7 +100,7 @@ io.on('connection', (socket) => {
 							str += key + ": " + words[key] + "; "
 						}
 						io.emit('new message', {
-							username: socket.username,
+							username: "snatch",
 							message: str
 						});
 					}
@@ -108,7 +108,7 @@ io.on('connection', (socket) => {
 					if (parseInt(results[0]) == 1){
 						centre = results[2]
 						io.emit('new message', {
-							username: socket.username,
+							username: "snatch",
 							message: results[1] + results[2]
 						});
 						var str = ""
@@ -116,7 +116,7 @@ io.on('connection', (socket) => {
 							str += key + ": " + words[key] + "; "
 						}
 						io.emit('new message', {
-							username: socket.username,
+							username: "snatch",
 							message: str
 						});
 						bag = results[3]
@@ -127,7 +127,7 @@ io.on('connection', (socket) => {
 
 			if(parseInt(results[0]) == -2){
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: results[1] + results[2]
 				});
 				var str = ""
@@ -135,7 +135,7 @@ io.on('connection', (socket) => {
 					str += key + ": " + words[key] + "; "
 				}
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: str
 				});
 			}
@@ -145,7 +145,7 @@ io.on('connection', (socket) => {
 			if(parseInt(results[0]) == 3){
 				centre = results[2]
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: results[1] + results[2]
 				});
 				temp = words[results[3]]
@@ -156,13 +156,13 @@ io.on('connection', (socket) => {
 					str += key + ": " + words[key] + "; "
 				}
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: str
 				});
 			}
 			if(parseInt(results[0]) == -3){
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: results[1] + results[2]
 				});
 				var str = ""
@@ -170,7 +170,7 @@ io.on('connection', (socket) => {
 					str += key + ": " + words[key] + "; "
 				}
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: str
 				});
 			}
@@ -178,7 +178,7 @@ io.on('connection', (socket) => {
 			if(parseInt(results[0]) == 4){
 				centre = results[2]
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: results[1] + results[2]
 				});
 				console.log(results[1])
@@ -191,7 +191,7 @@ io.on('connection', (socket) => {
 					str += key + ": " + words[key] + "; "
 				}
 				io.emit('new message', {
-					username: socket.username,
+					username: "snatch",
 					message: str
 				});
 			}
