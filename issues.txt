@@ -11,3 +11,5 @@ In order to take of (1) and (2), have created a withdrawal functionality
 (4) Two people having the same username leads to a mess - easily resolvable
 
 (5) snatching means word + 1 at least
+
+(6) sort centre
