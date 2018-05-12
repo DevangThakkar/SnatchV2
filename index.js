@@ -18,8 +18,8 @@ var centre = " Centre: ";
 var bag = "EEIBOOLEHALAPYTERWJRANEOSIDRRFLOESETAMQGIUVIUBPIKIFATRGNIADESTANHIDMGNEXTUOCRETLOISAZOYUODCNVNEAWE";
 var words = new Object();
 
-var active1 = True;
-var active2 = False;
+var active1 = true;
+var active2 = false;
 
 io.on("connection", (socket) => {
 	var addedUser = false;
@@ -34,8 +34,8 @@ io.on("connection", (socket) => {
 
 		while (active && active2){}
 
-		active1 = True;
-		active2 = True;
+		active1 = true;
+		active2 = true;
 
 		var options_c = {
 			mode: "text",
@@ -63,7 +63,7 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: str
 				});
-				active1 = False;
+				active1 = false;
 			}
 			// if a valid word is made
 			if (parseInt(results[0]) == 1){
@@ -84,7 +84,7 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: str
 				});
-				active1 = False;
+				active1 = false;
 			}
 			// if valid tiles are drawn
 			if (parseInt(results[0]) == 2){
@@ -110,7 +110,7 @@ io.on("connection", (socket) => {
 							username: "snatch",
 							message: str
 						});
-						active1 = False;
+						active1 = false;
 					}
 
 					if (parseInt(results[0]) == 1){
@@ -128,7 +128,7 @@ io.on("connection", (socket) => {
 							message: str
 						});
 						bag = results[3]
-						active1 = False;
+						active1 = false;
 					}
 				});
 			}
@@ -146,11 +146,11 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: str
 				});
-				active1 = False;
+				active1 = false;
 			}
 
 			if(parseInt(results[0]) == 0){
-				active1 = False;
+				active1 = false;
 			}
 
 			if(parseInt(results[0]) == 3){
@@ -170,7 +170,7 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: str
 				});
-				active1 = False;
+				active1 = false;
 			}
 
 			if(parseInt(results[0]) == -3){
@@ -186,7 +186,7 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: str
 				});
-				active1 = False;
+				active1 = false;
 			}
 
 			if(parseInt(results[0]) == 4){
@@ -208,7 +208,7 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: str
 				});
-				active1 = False;
+				active1 = false;
 			}
 
 		});
