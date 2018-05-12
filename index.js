@@ -232,6 +232,7 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: str
 				});
+				active1 = false;
 			}
 
 		});
