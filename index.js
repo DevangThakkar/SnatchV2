@@ -20,6 +20,7 @@ var numUsers = 0;
 var centre = " Centre: ";
 // Yes, I have removed the blanks because I was lazy; you may add them
 var bag = "EEIBOOLEHALAPYTERWJRANEOSIDRRFLOESETAMQGIUVIUBPIKIFATRGNIADESTANHIDMGNEXTUOCRETLOISAZOYUODCNVNEAWE";
+var bag_og = bag;
 var words = new Object();
 
 var active1 = true;
@@ -213,6 +214,24 @@ io.on("connection", (socket) => {
 					message: str
 				});
 				active1 = false;
+			}
+
+			if(parseInt(results[0]) == -9){
+				centre = results[2]
+				io.emit("new message", {
+					username: "snatch",
+					message: results[1] + results[2]
+				});
+				bag = bag_og
+				var str = ""
+				for(var key in words){
+					words[key] = []
+					str += key + ": " + words[key] + "; "
+				}
+				io.emit("new message", {
+					username: "snatch",
+					message: str
+				});
 			}
 
 		});

@@ -43,12 +43,15 @@ of existing word (Derivative rule) or fall under the 5+1/4+2/3+3 violation
 (Composition rule). Word list used is CSW15. The message just needs to be the
 word itself - no frills.
 
-The fourth (and the last, for now) case is for a user to retract their or
-someone else's word if it is pointed out to be a violation of the Derivative
-or Composition rule. The message needs to be the word prepended by a "-". 
-Withdrawing words is slightly shitty - the withdrawn word goes into the centre
-thus if the word was initially snatched, the user from whom the word was
-snatched needs to remake the word. Shitty, I know. Improve it, when you can.
+The fourth case is for a user to retract their or someone else's word if it is
+pointed out to be a violation of the Derivative or Composition rule. The
+message needs to be the word prepended by a "-". Withdrawing words is slightly
+shitty - the withdrawn word goes into the centre thus if the word was
+initially snatched, the user from whom the word was snatched needs to remake
+the word. Shitty, I know. Improve it, when you can.
+
+The fifth (and the last, for now) case is to reset the game. Enter ~ to reset
+the game.
 
 RETURN CODES:
  0: Chat
@@ -59,6 +62,7 @@ RETURN CODES:
  3: Valid withdrawal of tiles
 -3: Invalid withdrawal of tiles
  4: Snatching tiles
+-9: Reset the game
 
 EXAMPLE RUN:
 
@@ -117,6 +121,7 @@ check = True
 draw = False
 withdraw = False
 chat = False
+reset = False
 
 # DRAWING TILES
 if attempted[0] == '.':
@@ -165,8 +170,16 @@ if attempted[0] == '-':
 
 	if not flag_w:
 		print("-3")
-		print("You are trying to withdraw a non existing word.")
+		print("You are trying to withdraw a non existing word; ")
 		print("Centre: " + centre)
+
+#RESETTING
+if attempted[0] == '~':
+	check = False
+	reset = True
+	print("-9")
+	print(attempter + " has reset the game; ")
+	print("Centre: ")
 
 # CHECKING IF LEGIT WORD
 if check:
