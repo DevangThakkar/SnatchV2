@@ -99,7 +99,7 @@ ul {
 }
 
 .inputMessage {
-  font-size: 100%;
+  font-size: 75%;
 }
 
 .log {
@@ -146,4 +146,5 @@ ul {
   position: absolute;
   right: 0;
   width: 100%;
+  color: red;
 }
