@@ -2,7 +2,7 @@
 
 This describes the functionality provided by the Python script I've created.
 
-List of known issues is [here](github.com/DevangThakkar/SnatchV2/blob/master/issues.txt)
+List of known issues is [here](../master/issues.txt)
 
 This script parses the input passed by the user. There are four possible
 cases, with possible subcases.
