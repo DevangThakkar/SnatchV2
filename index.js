@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
 			message: data
 		});
 
-		while (active && active2){}
+		while (active1 && active2){}
 
 		active1 = true;
 		active2 = true;
