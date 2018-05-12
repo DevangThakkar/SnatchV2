@@ -7,6 +7,10 @@ var io = require("socket.io")(server);
 var port = process.env.PORT || 3000;
 var PythonShell = require("python-shell");
 
+server.listen(port, () => {
+  console.log('Server listening at port %d', port);
+});
+
 // Routing
 app.use(express.static(path.join(__dirname, "public")));
 
