@@ -195,7 +195,7 @@ if check:
 			centre = centre.replace(letter, "", 1)
 
 	choice = attempted[0].upper()
-	fname = "dict/CSW_" + choice + ".txt"
+	fname = "updated_dict/CSW_" + choice + ".txt"
 	csw15 = set([])
 	with open(fname, "r") as f:
 		for line in f:
