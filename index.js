@@ -28,6 +28,12 @@ var active2 = false;
 
 io.on("connection", (socket) => {
 	var addedUser = false;
+	setInterval(() => {
+	    io.emit('new message', {
+	    	username: "snatch-daemon",
+			message: "just keeping this server awake, please continue"
+	    });
+	}, 1200000);
 
 	// when the client emits "new message", this listens and executes
 	socket.on("new message", (data) => {
