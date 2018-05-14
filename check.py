@@ -220,10 +220,15 @@ def funct():
 			flag1 = True
 			loser = ""
 			lost = ""
+			same = False
+
 			for user in word_dict:
 				for word in word_dict[user]:
 					flag1 = True
 					temp_w = word
+					if attempted == word:
+						same = True
+						break
 					for letter in attempted:
 						if letter not in centre + word:
 							flag1 = False
@@ -248,10 +253,13 @@ def funct():
 					if flag1:
 						lost = word
 						break
+				if same:
+					break
 				if flag1:
 					loser = user
 					break
-			if not flag1:
+
+			if not flag1 or same:
 				print("-1")
 				print(attempted + " is invalid; ")
 				centre = temp

@@ -1,0 +1,5 @@
+Version:
+
+1.1: Alpha build
+1.2: Minor corrections courtesy Mardia
+1.3: Added faster dictionary checking support

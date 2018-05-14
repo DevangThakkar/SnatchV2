@@ -229,7 +229,7 @@ $(function() {
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
-    var message = "Welcome to Snatch V1.2! Enter a dot (.) to draw a tile. Max tiles drawable at once: 7. ";
+    var message = "Welcome to Snatch V1.3! Enter a dot (.) to draw a tile. Max tiles drawable at once: 7. ";
     message += "Enter a word to create/snatch it. ";
     message += "Prepend message with a slash(/) to chat. Prepend word with a dash(-) to withdraw it. ";
     message += "Enter ~ to reset the game. Code: http://github.com/DevangThakkar/SnatchV2"
