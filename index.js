@@ -209,10 +209,8 @@ io.on("connection", (socket) => {
 				console.log(results[1])
 				words[socket.username].push(results[5]);
 				temp = words[results[3]]
-				io.emit("new message", {
-					username: "snatch",
-					message: results[3] + word[results[3]]
-				});
+				console.log(results[3])
+				console.log(word[results[3]])
 				temp.splice(temp.indexOf(results[4]), 1)
 				words[results[3]] = temp
 				var str = ""
