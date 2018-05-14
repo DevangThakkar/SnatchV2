@@ -278,7 +278,7 @@ def funct():
 				print("4")
 				print(attempter + " made: " + attempted + " from " + lost + "; ")
 				print("Centre: " + centre)
-				print(word_dict[loser])
+				print(loser)
 				print(lost)
 				print(attempted)
 				sys.exit()
