@@ -161,7 +161,7 @@ def funct():
 					print("3")
 					print(attempter+" has withdrawn "+user+"'s word "+word+"; ")
 					print("Centre: " + (centre+word))
-					print(user)
+					print(user.lower())
 					print(word)
 					flag_w = True
 				if flag_w:
