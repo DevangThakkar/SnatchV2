@@ -251,7 +251,7 @@ io.on("connection", (socket) => {
 		if (addedUser)
 			return;
 
-		words[username] = []
+		words[username.toLowerCase()] = []
 
 		// we store the username in the socket session for this client
 		socket.username = username;
