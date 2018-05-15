@@ -50,7 +50,7 @@ io.on("connection", (socket) => {
 
 		var options_c = {
 			mode: "text",
-			args: [centre.substring(8), data, socket.username, JSON.stringify(words)]
+			args: [centre.substring(8), data, socket.username.toLowerCase(), JSON.stringify(words)]
 		};
 		PythonShell.run("check.py", options_c, function (err, results) {
 			if (err){
@@ -101,7 +101,7 @@ io.on("connection", (socket) => {
 			if (parseInt(results[0]) == 2){
 				var options_d = {
 					mode: "text",
-					args: [centre.substring(8), bag, results[1], socket.username]
+					args: [centre.substring(8), bag, results[1], socket.username.toLowerCase()]
 				}
 				PythonShell.run("draw.py", options_d, function(err, results) {
 					if (err) throw err;
