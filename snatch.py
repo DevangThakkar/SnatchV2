@@ -1,4 +1,4 @@
-import string
+import string 
 import random
 import sys
 """Snatch program:
