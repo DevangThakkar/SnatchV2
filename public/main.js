@@ -241,6 +241,9 @@ $(function() {
 
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', function (data) {
+    var mySound = new Audio('pop.m4a');
+    //play sound
+    mySound.play();
     addChatMessage(data);
   });
 
