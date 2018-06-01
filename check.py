@@ -184,6 +184,11 @@ def funct():
 
 	# CHECKING IF LEGIT WORD
 	if check:
+		if len(attempted) < 2:
+			print("-1")
+			print(attempted + " is invalid; ")
+			print("Centre: " + centre)
+			sys.exit()
 		temp = centre
 		flag = True
 
