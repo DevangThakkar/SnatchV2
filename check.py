@@ -186,7 +186,7 @@ def funct():
 	if check:
 		if len(attempted) < 2:
 			print("-1")
-			print(attempted + " is invalid; ")
+			print(attempted + " is too short; ")
 			print("Centre: " + centre)
 			sys.exit()
 		temp = centre
@@ -209,7 +209,7 @@ def funct():
 
 		if ("\"" + attempted + "\"") not in csw15 and flag:
 			print("-1")
-			print(attempted + " is invalid; ")
+			print(attempted + " is an invalid word; ")
 			centre = temp
 			print("Centre: " + centre)
 			flag = False
@@ -273,7 +273,7 @@ def funct():
 			
 			if ("\"" + attempted + "\"") not in csw15 and flag1:
 				print("-1")
-				print(attempted + " is invalid; ")
+				print(attempted + " is an invalid word ; ")
 				centre = temp
 				print("Centre: " + centre)
 				flag = False
