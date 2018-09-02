@@ -272,7 +272,7 @@ io.on("connection", (socket) => {
 
 		temp_username = '';
 		for (var i = 0, n = username.length; i < n; i++) {
-			if (username.charCodeAt( i ) > 255) { 
+			if (username.charCodeAt( i ) < 255) { 
 				temp_username = temp_username + username[i];
 			}
 		}
