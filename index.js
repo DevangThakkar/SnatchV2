@@ -22,7 +22,7 @@ var centre = " Centre: ";
 var bag = "EEIBOOLEHALAPYTERWJRANEOSIDRRFLOESETAMQGIUVIUBPIKIFATRGNIADESTANHIDMGNEXTUOCRETLOISAZOYUODCNVNEAWE";
 var bag_og = bag;
 var words = new Object();
-words['the_void\u2122'] = []
+words['the_void\u2122'] = [];
 
 var active1 = true;
 var active2 = false;
@@ -67,9 +67,11 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: results[1]+results[2]
 				});
-				var str = ""
+				var str = "";
 				for(var key in words){
-					str += key + ": " + words[key] + "; "
+					if (words[key].length>0) {
+						str += key + ": " + words[key] + "; ";
+					}
 				}
 				io.emit("new message", {
 					username: "snatch",
@@ -90,7 +92,9 @@ io.on("connection", (socket) => {
 				});
 				var str = ""
 				for(var key in words){
-					str += key + ": " + words[key] + "; "
+					if (words[key].length>0) {
+						str += key + ": " + words[key] + "; ";
+					}
 				}
 				io.emit("new message", {
 					username: "snatch",
@@ -116,7 +120,9 @@ io.on("connection", (socket) => {
 						});
 						var str = ""
 						for(var key in words){
-							str += key + ": " + words[key] + "; "
+							if (words[key].length>0) {
+								str += key + ": " + words[key] + "; ";
+							}
 						}
 						io.emit("new message", {
 							username: "snatch",
@@ -133,7 +139,9 @@ io.on("connection", (socket) => {
 						});
 						var str = ""
 						for(var key in words){
-							str += key + ": " + words[key] + "; "
+							if (words[key].length>0) {
+								str += key + ": " + words[key] + "; ";
+							}
 						}
 						io.emit("new message", {
 							username: "snatch",
@@ -152,7 +160,9 @@ io.on("connection", (socket) => {
 				});
 				var str = ""
 				for(var key in words){
-					str += key + ": " + words[key] + "; "
+					if (words[key].length>0) {
+						str += key + ": " + words[key] + "; ";
+					}
 				}
 				io.emit("new message", {
 					username: "snatch",
@@ -176,7 +186,9 @@ io.on("connection", (socket) => {
 				words[results[3]] = temp
 				var str = ""
 				for(var key in words){
-					str += key + ": " + words[key] + "; "
+					if (words[key].length>0) {
+						str += key + ": " + words[key] + "; ";
+					}
 				}
 				io.emit("new message", {
 					username: "snatch",
@@ -192,7 +204,9 @@ io.on("connection", (socket) => {
 				});
 				var str = ""
 				for(var key in words){
-					str += key + ": " + words[key] + "; "
+					if (words[key].length>0) {
+						str += key + ": " + words[key] + "; ";
+					}
 				}
 				io.emit("new message", {
 					username: "snatch",
@@ -216,7 +230,9 @@ io.on("connection", (socket) => {
 				words[results[3]] = temp
 				var str = ""
 				for(var key in words){
-					str += key + ": " + words[key] + "; "
+					if (words[key].length>0) {
+						str += key + ": " + words[key] + "; ";
+					}
 				}
 				io.emit("new message", {
 					username: "snatch",
@@ -235,7 +251,9 @@ io.on("connection", (socket) => {
 				var str = ""
 				for(var key in words){
 					words[key] = []
-					str += key + ": " + words[key] + "; "
+					if (words[key].length>0) {
+						str += key + ": " + words[key] + "; ";
+					}
 				}
 				io.emit("new message", {
 					username: "snatch",
@@ -251,6 +269,14 @@ io.on("connection", (socket) => {
 	socket.on("add user", (username) => {
 		if (addedUser)
 			return;
+
+		temp_username = '';
+		for (var i = 0, n = username.length; i < n; i++) {
+			if (username.charCodeAt( i ) > 255) { 
+				temp_username = temp_username + username[i];
+			}
+		}
+		username = temp_username;
 
 		words[username.toLowerCase()] = []
 
