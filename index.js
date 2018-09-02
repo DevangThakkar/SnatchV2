@@ -22,6 +22,7 @@ var centre = " Centre: ";
 var bag = "EEIBOOLEHALAPYTERWJRANEOSIDRRFLOESETAMQGIUVIUBPIKIFATRGNIADESTANHIDMGNEXTUOCRETLOISAZOYUODCNVNEAWE";
 var bag_og = bag;
 var words = new Object();
+words['the_void\u2122'] = []
 
 var active1 = true;
 var active2 = false;
@@ -286,7 +287,8 @@ io.on("connection", (socket) => {
 		if (addedUser) {
 			--numUsers;
 
-			delete words[socket.username]
+			words['the_void\u2122'] = words['the_void\u2122'].concat(words[socket.username])
+			words[socket.username] = []
 
 			// echo globally that this client has left
 			socket.broadcast.emit("user left", {
