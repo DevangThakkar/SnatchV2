@@ -278,12 +278,13 @@ io.on("connection", (socket) => {
 		}
 		username = temp_username;
 		if (username.toLowerCase() in words)
-			username_new = username + Math.floor(Math.random() * 1000);
+			console.log('duplicate');
+			username = username + Math.floor(Math.random() * 1000);
 
-		words[username_new.toLowerCase()] = []
+		words[username.toLowerCase()] = []
 
 		// we store the username in the socket session for this client
-		socket.username = username_new;
+		socket.username = username;
 		++numUsers;
 		addedUser = true;
 		socket.emit("login", {
@@ -291,7 +292,7 @@ io.on("connection", (socket) => {
 		});
 		// echo globally (all clients) that a person has connected
 		socket.broadcast.emit("user joined", {
-			username: socket.username_new,
+			username: socket.username,
 			numUsers: numUsers
 		});
 	});
