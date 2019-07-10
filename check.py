@@ -153,6 +153,13 @@ def funct():
 
 	# WITHDRAWING
 	if attempted[0] == '-':
+		if attempted == '-':
+			print("-1")
+			print(attempted + " is an invalid word; ")
+			centre = temp
+			print("Centre: " + centre)
+			flag = False
+			sys.exit()
 		check = False
 		withdraw = True
 
