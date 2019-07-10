@@ -153,11 +153,17 @@ def funct():
 
 	# SHUFFLING
 	if attempted[0] == '$':
+		if len(attempted.strip()) != 1:
+			print("-1")
+			print("Perhaps there's a typo; ")
+			print("Centre: " + centre)
+			sys.exit()
+
 		shuffled_centre = list(centre)
 		random.shuffle(shuffled_centre)
 		centre = ''.join(shuffled_centre)
 		print("5")
-		print(attempter+" has shuffled the centre; ")
+		print(attempter + " has shuffled the centre; ")
 		print("Centre: " + centre)
 
 	# CHATTING
