@@ -1,43 +1,13 @@
-import string 
+# miku
+import string
 import random
 import sys
-"""Snatch program:
-Enter number of tiles to be drawn, and get presented with a list of tiles on the floor.
-Everytime a new word is formed, enter the tiles that are taken from the floor the due to that word.
-Sample run:
-########################
-Enter number of tiles to draw from bag
-7
-Tiles on the floor:
-['E', 'T', 'A', 'V', 'I', 'E', 'I']
-Enter letters removed from floor. If no letters are removed, press Enter.
-<blank>
-########################
-Enter number of tiles to draw from bag
-3
-Tiles on the floor:
-['E', 'T', 'A', 'V', 'I', 'E', 'I', 'R', 'C', 'W']
-Enter letters removed from floor. If no letters are removed, press Enter.
-CREATIVE
-Tiles on the floor:
-['I', 'W']
-########################
-Enter number of tiles to draw from bag
-3
-Tiles on the floor:
-['I', 'W', 'J', 'E', 'W']
-Enter letters removed from floor. If no letters are removed, press Enter.
-<blank
-########################
 
-TODO: Add players and words.
-Add wordchecks.
-
-"""
 # center = str(sys.argv[1]).upper()
 # attempted = str(sys.argv[2]).upper()
-k=7
-tiledict={'A' : 9,
+k = 7
+tiledict = {
+'A' : 9,
 'B' : 2,
 'C' : 2,
 'D' : 4,
@@ -65,22 +35,23 @@ tiledict={'A' : 9,
 'Z' : 1,
 '?' : 2
 }
+
 tilestring = list(''.join([L*tiledict[L] for L in string.ascii_uppercase+'?']))
-currstring=[]
-while (tilestring!=""):
-	print ("########################")
-	k=input("Enter number of tiles to draw from bag\n")
+currstring = []
+while tilestring != "":
+	print("########################")
+	k = input("Enter number of tiles to draw from bag\n")
 	drawntiles = [tilestring.pop(random.randrange(len(tilestring))) for _ in xrange(k)]
-	currstring=currstring + drawntiles
+	currstring = currstring + drawntiles
 	print("Tiles on the floor:")
-	print (currstring)#, tilestring)
-	enterWord= raw_input("Enter letters removed from floor. If no letters are removed, press Enter.\n")
+	print(currstring) #, tilestring)
+	enterWord = raw_input("Enter letters removed from floor. If no letters are removed, press Enter.\n")
 	flag = 0
 	for i in enterWord:
-		flag=1
+		flag = 1
 		currstring.remove(i)
-	if(flag):
+	if flag:
 		print("Tiles on the floor:")
-		print (currstring)#
+		print(currstring)
 
 	

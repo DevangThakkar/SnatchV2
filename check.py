@@ -1,6 +1,6 @@
 #MIT License
-#Copyright (c) 2018 Devang Thakkar
-# https://home.iitb.ac.in/~devangthakkar
+#Copyright (c) 2019 Devang Thakkar
+# https://www.devangthakkar.com
 #
 #Permission is hereby granted, free of charge, to any person obtaining a copy
 #of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 
 #PEP-8 format: Limit all lines to a maximum of 79 characters ----------------|
 
+import random
 import sys
 
 """
@@ -90,6 +91,7 @@ d2> /Ah. MB.
 d2> -TREATS
 >>> d2 withdrew TREATS; Centre: EYTREATS
 """
+
 # @profile
 def funct():
 	# first argument is the letters in the centre
@@ -160,7 +162,9 @@ def funct():
 				if withdrawn == word:
 					print("3")
 					print(attempter+" has withdrawn "+user+"'s word "+word+"; ")
-					print("Centre: " + (centre+word))
+					shuffled_centre = list(centre+word)
+					random.shuffle(shuffled_centre)
+					print("Centre: " + shuffled_centre)
 					print(user.lower())
 					print(word)
 					flag_w = True
@@ -283,7 +287,7 @@ def funct():
 
 			if flag1:
 				print("4")
-				print(attempter + " made: " + attempted + " from " + lost + "; ")
+				print(attempter + " made " + attempted + " from " + lost + ";")
 				print("Centre: " + centre)
 				print(loser.lower())
 				print(lost)
