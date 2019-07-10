@@ -278,10 +278,11 @@ io.on("connection", (socket) => {
 		}
 		username = temp_username;
 		console.log('hello');
-		if (username.toLowerCase() in words)
+		if (username.toLowerCase() in words){
 			console.log('duplicate');
 			username = username + Math.floor(Math.random() * 1000);
-
+		}
+		
 		words[username.toLowerCase()] = []
 
 		// we store the username in the socket session for this client
