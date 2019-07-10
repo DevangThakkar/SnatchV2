@@ -128,6 +128,12 @@ def funct():
 	reset = False
 
 	# DRAWING TILES
+	if attempted == '':
+		print("-1")
+		print(attempted + " is too short; ")
+		print("Centre: " + centre)
+		sys.exit()
+
 	if attempted[0] == '.':
 		check = False
 		draw = True
