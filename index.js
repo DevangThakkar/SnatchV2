@@ -247,7 +247,7 @@ io.on("connection", (socket) => {
 					username: "snatch",
 					message: results[1]
 				});
-
+			}
 
 			if(parseInt(results[0]) == -9){
 				centre = results[2]
