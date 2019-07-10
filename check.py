@@ -64,6 +64,7 @@ RETURN CODES:
  3: Valid withdrawal of tiles
 -3: Invalid withdrawal of tiles
  4: Snatching tiles
+ 5: Shuffling
 -9: Reset the game
 
 EXAMPLE RUN:
@@ -150,6 +151,14 @@ def funct():
 			print("Perhaps there's a typo; ")
 			print("Centre: " + centre)
 
+	# SHUFFLING
+	if attempted[0] == '$':
+		shuffled_centre = list(centre)
+		random.shuffle(shuffled_centre)
+		centre = ''.join(shuffled_centre)
+		print("5")
+		print("Centre: " + centre)
+
 	# CHATTING
 	if attempted[0] == '/':
 		check = False
@@ -177,9 +186,9 @@ def funct():
 				if withdrawn == word:
 					print("3")
 					print(attempter+" has withdrawn "+user+"'s word "+word+"; ")
-					shuffled_centre = list(centre+word)
-					random.shuffle(shuffled_centre)
-					print("Centre: " + ''.join(shuffled_centre))
+					shuffled = list(centre+word)
+					random.shuffle(shuffled)
+					print("Centre: " + centre + ''.join(shuffled))
 					print(user.lower())
 					print(word)
 					flag_w = True

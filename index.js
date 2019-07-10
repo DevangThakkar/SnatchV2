@@ -241,6 +241,14 @@ io.on("connection", (socket) => {
 				active1 = false;
 			}
 
+			if(parseInt(results[0]) == 5){
+				centre = results[1]
+				io.emit("new message", {
+					username: "snatch",
+					message: results[1]
+				});
+
+
 			if(parseInt(results[0]) == -9){
 				centre = results[2]
 				io.emit("new message", {
@@ -277,19 +285,9 @@ io.on("connection", (socket) => {
 			}
 		}
 		username = temp_username;
-		console.log('hello');
-		for(var key in words){
-			console.log(key);
-		}
-		console.log('hello');
 		if (username.toLowerCase() in words){
-			console.log(username);
-			console.log(words[username]);
-			console.log('duplicate');
 			username = username + Math.floor(Math.random() * 1000);
 		}
-		console.log(username);
-		console.log(socket.username);
 		words[username.toLowerCase()] = []
 
 		// we store the username in the socket session for this client
