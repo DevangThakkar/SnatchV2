@@ -279,6 +279,7 @@ io.on("connection", (socket) => {
 		username = temp_username;
 		console.log('hello');
 		if (username.toLowerCase() in words){
+			console.log(words[username]);
 			console.log('duplicate');
 			username = username + Math.floor(Math.random() * 1000);
 		}
