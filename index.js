@@ -242,10 +242,10 @@ io.on("connection", (socket) => {
 			}
 
 			if(parseInt(results[0]) == 5){
-				centre = results[1]
+				centre = results[2]
 				io.emit("new message", {
 					username: "snatch",
-					message: results[1]
+					message: results[1] + results[2]
 				});
 			}
 

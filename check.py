@@ -157,6 +157,7 @@ def funct():
 		random.shuffle(shuffled_centre)
 		centre = ''.join(shuffled_centre)
 		print("5")
+		print(attempter+" has shuffled the centre; ")
 		print("Centre: " + centre)
 
 	# CHATTING
