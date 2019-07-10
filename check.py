@@ -22,6 +22,7 @@
 
 #PEP-8 format: Limit all lines to a maximum of 79 characters ----------------|
 
+import itertools
 import random
 import sys
 
@@ -207,6 +208,18 @@ def funct():
 				centre = centre.replace(letter, "", 1)
 
 		choice = (attempted[0]+attempted[1]).upper()
+
+		# prevent crashing because of file not found because of random input
+		alphabets = [str(chr(i)) for i in range(65, 91)]
+		valid = [''.join(i) for i in itertools.product(alphabets, repeat = 2)]		
+		if choice not in valid:
+			print("-1")
+			print(attempted + " is an invalid word; ")
+			centre = temp
+			print("Centre: " + centre)
+			flag = False
+			sys.exit()
+
 		csw15 = set([])
 		fname = "new_updated_dict/CSW_" + choice + ".txt"
 		with open(fname, "r") as f:
