@@ -179,7 +179,7 @@ def funct():
 					print(attempter+" has withdrawn "+user+"'s word "+word+"; ")
 					shuffled_centre = list(centre+word)
 					random.shuffle(shuffled_centre)
-					print("Centre: " + str(shuffled_centre))
+					print("Centre: " + ''.join(shuffled_centre))
 					print(user.lower())
 					print(word)
 					flag_w = True
