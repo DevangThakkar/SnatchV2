@@ -153,17 +153,18 @@ def funct():
 
 	# WITHDRAWING
 	if attempted[0] == '-':
-		if attempted == '-':
-			print("-1")
-			print(attempted + " is an invalid word; ")
-			centre = temp
-			print("Centre: " + centre)
-			flag = False
-			sys.exit()
 		check = False
 		withdraw = True
 
 		flag_w = False
+
+		if attempted == '-':
+			print("-1")
+			print(attempted + " is an invalid word; ")
+			print("Centre: " + centre)
+			# flag_w = False
+			sys.exit()
+
 		withdrawn = attempted[1:]
 		for user in word_dict:
 			for word in word_dict[user]:
