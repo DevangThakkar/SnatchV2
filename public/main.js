@@ -232,7 +232,7 @@ $(function() {
     var message = "Welcome to Snatch V2.5! Enter a dot (.) to draw a tile. Max tiles drawable at once: 7. ";
     message += "Enter a word to create/snatch it. ";
     message += "Prepend message with a slash(/) to chat. Prepend word with a dash(-) to withdraw it. ";
-    message += "Enter $ to shuffle the tiles in the centre."
+    message += "Enter $ to shuffle the tiles in the centre. "
     message += "Enter ~ to reset the game. Code: http://github.com/DevangThakkar/SnatchV2"
     log(message, {
       prepend: true

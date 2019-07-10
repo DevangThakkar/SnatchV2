@@ -3,15 +3,9 @@ Issues:
 (1) Have not integrated root checking (e.g. check -> checking)
 (2) Have not integrated (3+3/4+2/5+1) checking (e.g. hardly ~v hard+ly)
 
-In order to take of (1) and (2), have created a withdrawal functionality
-
 (3) Two people typing at the almost same time might lead to a mess, 
 	but I've probably resolved that - need to try it to know better.
 
-(4) Two people having the same username leads to a mess - easily resolvable
+In order to take of (1), (2), and (3), have created a withdrawal functionality
 
-(5) snatching means word + 1 at least
-
-(6) sort centre
-
-(7) client crashes when a message starts (or contains?) special characters like a . or ? followed by text
+(4) Need to incorporate blanks in the game

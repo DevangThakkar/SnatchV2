@@ -7,7 +7,7 @@ Changes documented starting V2.5 because better late than never.
 ### Fixed
 - Snatch no longer crashes regardless of what input you enter
 - duplicate usernames allowed, new user gets random digits after their name, instead of clashing
-- centre gets shuffled on re-adding withdrawn word
+- withdrawn word gets shuffled before entering the centre
 
 ### Added
 - can shuffle the centre using $
