@@ -277,6 +277,8 @@ io.on("connection", (socket) => {
 			}
 		}
 		username = temp_username;
+		if words.includes(username.toLowerCase())
+			username = username + Math.floor(Math.random() * 1000);
 
 		words[username.toLowerCase()] = []
 
