@@ -186,7 +186,7 @@ def funct():
 				if withdrawn == word:
 					print("3")
 					print(attempter+" has withdrawn "+user+"'s word "+word+"; ")
-					shuffled = list(centre+word)
+					shuffled = list(word)
 					random.shuffle(shuffled)
 					print("Centre: " + centre + ''.join(shuffled))
 					print(user.lower())
