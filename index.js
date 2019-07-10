@@ -277,7 +277,7 @@ io.on("connection", (socket) => {
 			}
 		}
 		username = temp_username;
-		if (words.indexOf(username.toLowerCase()) === -1)
+		if (username.toLowerCase() in words)
 			username = username + Math.floor(Math.random() * 1000);
 
 		words[username.toLowerCase()] = []
