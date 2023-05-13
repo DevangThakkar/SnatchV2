@@ -1,3 +1,5 @@
+This project is now archived since Heroku removed support for its free plans.
+
 # ONLINE SNATCH
 
 This describes the functionality provided by the Python script I've created.
